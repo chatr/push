@@ -3,7 +3,7 @@ iOS GUIDE
 
 ## Get started
 In order to get started with iOS you will have to obtain a __cert.pem__ and an __key.pem__ for both production and development.
-Bellow are some snippets of documentaion:
+Bellow are some snippets of documentation:
 
 ##Certificates
 
@@ -54,10 +54,7 @@ Verifying - Enter PEM pass phrase:
 ```
 You first need to enter the passphrase for the .p12 file so that openssl can read it. Then you need to enter a new passphrase that will be used to encrypt the PEM file. Again for this tutorial I used “pushchat” as the PEM passphrase. You should choose something more secure.
 Note: if you don’t enter a PEM passphrase, openssl will not give an error message but the generated .pem file will not have the private key in it.
-Finally, combine the certificate and key into a single .pem file:
-```
-$ cat PushChatCert.pem PushChatKey.pem > ck.pem
-```
+
 At this point it’s a good idea to test whether the certificate works. Execute the following command:
 ```
 $ telnet gateway.sandbox.push.apple.com 2195
@@ -85,7 +82,7 @@ entrust_2048_ca.cer
 ```
 Download it and put it into the same location as your PushChatCert.cert and PushChatKey.key. Now add the -CAfile flag and the certificate we just downloaded to try our secure connection again:
 ```
-$ openssl s_client -connect gateway.sandbox.push.apple.com:2195 -CAfile entrust_2048_ca.cer -cert PushChatCert.pem.pem -key PushChatKey.pem
+$ openssl s_client -connect gateway.sandbox.push.apple.com:2195 -CAfile entrust_2048_ca.cer -cert PushChatCert.pem -key PushChatKey.pem
 ```
 And you should see the openssl message change to 
 ```
